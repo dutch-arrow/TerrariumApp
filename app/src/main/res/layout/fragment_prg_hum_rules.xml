@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="rule1" type="nl.das.terrarium.data.Rule" />
+        <variable name="rule2" type="nl.das.terrarium.data.Rule" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pg_lay_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pg_lblHumRuleText1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/pg_lblHumRuleText1"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pg_lblRule2b_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/pg_lblHumRuleText2b"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:labelFor="@id/pg_edtValue_1"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblHumRuleText1_1"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblHumRuleText1_1"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblHumRuleText1_1" />
+
+            <EditText
+                android:id="@+id/pg_edtValue_1"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:text="@{rule1.value.equalsIgnoreCase(&quot;0&quot;) ? &quot;&quot; : (rule1.value.startsWith(&quot;-&quot;) ? rule1.value.substring(1): rule1.value)}"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblRule2b_3"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblRule2b_3"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblRule2b_3" />
+
+            <TextView
+                android:id="@+id/pg_lblPercent_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percent"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblRule2b_3"
+                app:layout_constraintStart_toEndOf="@+id/pg_edtValue_1"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblRule2b_3" />
+
+            <TextView
+                android:id="@+id/pg_lblHumRuleText3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/pg_lblHumRuleText3"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblPercent_3"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblPercent_3"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblPercent_3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pg_HumAction_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pg_lblHumRuleText1_1"
+                app:layout_constraintTop_toBottomOf="@+id/pg_lblHumRuleText3_1">
+
+                <TextView
+                    android:id="@+id/pg_lblActionText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/pg_lblActionText1"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/pg_ddnDevices_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/devices_label_array"
+                    android:layout_marginStart="8dp"
+                    app:selection="@{rule1.getAction(0).pos}"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText1"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText1"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText1" />
+
+                <TextView
+                    android:id="@+id/pg_lblActionText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pg_lblActionText2"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_ddnDevices_1"
+                    app:layout_constraintStart_toEndOf="@+id/pg_ddnDevices_1"
+                    app:layout_constraintTop_toTopOf="@+id/pg_ddnDevices_1" />
+
+                <RadioGroup
+                    android:id="@+id/pg_rbgPeriod_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText2"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText2"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodIdeal_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/pg_lblActionText3b"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule1.getAction(0).idealCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodSec_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:labelFor="@id/pg_edtPeriod_1"
+                            android:text="@string/pg_lblActionText3a"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule1.getAction(0).onPeriodCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/pg_edtPeriod_1"
+                            android:enabled="false"
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@{(rule1.getAction(0).onPeriod.startsWith(&quot;-&quot;) || rule1.getAction(0).onPeriod.equals(&quot;0&quot;)) ? &quot;&quot; : rule1.getAction(0).onPeriod}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pg_rbtPeriodSec_1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/pg_lblSeconds1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/seconds"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/pg_edtPeriod_1"
+                            app:layout_constraintStart_toEndOf="@+id/pg_edtPeriod_1"
+                            app:layout_constraintTop_toTopOf="@+id/pg_edtPeriod_1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/pg_lblActionText4"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pg_HumAction_1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pg_HumAction_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pg_HumAction_1"
+                app:layout_constraintTop_toBottomOf="@+id/textView3_3">
+
+                <TextView
+                    android:id="@+id/pg_lblActionText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/pg_lblActionText1"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/pg_ddnDevices_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/devices_label_array"
+                    android:layout_marginStart="8dp"
+                    app:selection="@{rule1.getAction(1).pos}"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText3"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText3"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText3" />
+
+                <TextView
+                    android:id="@+id/pg_lblActionText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pg_lblActionText2"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_ddnDevices_2"
+                    app:layout_constraintStart_toEndOf="@+id/pg_ddnDevices_2"
+                    app:layout_constraintTop_toTopOf="@+id/pg_ddnDevices_2" />
+
+                <RadioGroup
+                    android:id="@+id/pg_rbgPeriod_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText4"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText4"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText4">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodIdeal_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/pg_lblActionText3b"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule1.getAction(1).idealCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodSec_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:labelFor="@id/pg_edtPeriod_2"
+                            android:text="@string/pg_lblActionText3a"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule1.getAction(1).onPeriodCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/pg_edtPeriod_2"
+                            android:enabled="false"
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@{(rule1.getAction(1).onPeriod.startsWith(&quot;-&quot;) || rule1.getAction(1).onPeriod.equals(&quot;0&quot;)) ? &quot;&quot; : rule1.getAction(1).onPeriod}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pg_rbtPeriodSec_2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/pg_lblSeconds2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/seconds"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/pg_edtPeriod_2"
+                            app:layout_constraintStart_toEndOf="@+id/pg_edtPeriod_2"
+                            app:layout_constraintTop_toTopOf="@+id/pg_edtPeriod_2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pg_lay_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pg_lblHumRuleText1_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/pg_lblHumRuleText1"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pg_lblRule2a_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/pg_lblHumRuleText2a"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:labelFor="@id/pg_edtValue_2"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblHumRuleText1_4"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblHumRuleText1_4"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblHumRuleText1_4" />
+
+            <EditText
+                android:id="@+id/pg_edtValue_2"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:text="@{rule2.value.equalsIgnoreCase(&quot;0&quot;) ? &quot;&quot; : (rule2.value.startsWith(&quot;-&quot;) ? rule2.value.substring(1): rule2.value)}"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblRule2a_4"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblRule2a_4"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblRule2a_4" />
+
+            <TextView
+                android:id="@+id/pg_lblPercent_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percent"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblRule2a_4"
+                app:layout_constraintStart_toEndOf="@+id/pg_edtValue_2"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblRule2a_4" />
+
+            <TextView
+                android:id="@+id/pg_lblHumRuleText3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/pg_lblHumRuleText3"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblPercent_4"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblPercent_4"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblPercent_4" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pg_HumAction_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pg_lblHumRuleText1_4"
+                app:layout_constraintTop_toBottomOf="@+id/pg_lblHumRuleText3_4">
+
+                <TextView
+                    android:id="@+id/pg_lblActionText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/pg_lblActionText1"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/pg_ddnDevices_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/devices_label_array"
+                    android:layout_marginStart="8dp"
+                    app:selection="@{rule2.getAction(0).pos}"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText5"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText5"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText5" />
+
+                <TextView
+                    android:id="@+id/pg_lblActionText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pg_lblActionText2"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_ddnDevices_3"
+                    app:layout_constraintStart_toEndOf="@+id/pg_ddnDevices_3"
+                    app:layout_constraintTop_toTopOf="@+id/pg_ddnDevices_3" />
+
+                <RadioGroup
+                    android:id="@+id/pg_rbgPeriod_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText6"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText6"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText6">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodIdeal_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/pg_lblActionText3b"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule2.getAction(0).idealCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodSec_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:labelFor="@id/pg_edtPeriod_3"
+                            android:text="@string/pg_lblActionText3a"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule2.getAction(0).onPeriodCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/pg_edtPeriod_3"
+                            android:enabled="false"
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@{(rule2.getAction(0).onPeriod.startsWith(&quot;-&quot;) || rule2.getAction(0).onPeriod.equals(&quot;0&quot;)) ? &quot;&quot; : rule2.getAction(0).onPeriod}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pg_rbtPeriodSec_3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/pg_lblSeconds3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/seconds"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/pg_edtPeriod_3"
+                            app:layout_constraintStart_toEndOf="@+id/pg_edtPeriod_3"
+                            app:layout_constraintTop_toTopOf="@+id/pg_edtPeriod_3" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@string/pg_lblActionText4"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pg_HumAction_3" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pg_HumAction_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/pg_HumAction_3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3_4">
+
+                <TextView
+                    android:id="@+id/pg_lblActionText7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/pg_lblActionText1"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/pg_ddnDevices_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/devices_label_array"
+                    android:layout_marginStart="8dp"
+                    app:selection="@{rule2.getAction(1).pos}"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText7"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText7"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText7" />
+
+                <TextView
+                    android:id="@+id/pg_lblActionText8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pg_lblActionText2"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_ddnDevices_4"
+                    app:layout_constraintStart_toEndOf="@+id/pg_ddnDevices_4"
+                    app:layout_constraintTop_toTopOf="@+id/pg_ddnDevices_4" />
+
+                <RadioGroup
+                    android:id="@+id/pg_rbgPeriod4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/pg_lblActionText8"
+                    app:layout_constraintStart_toEndOf="@+id/pg_lblActionText8"
+                    app:layout_constraintTop_toTopOf="@+id/pg_lblActionText8">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodIdeal_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/pg_lblActionText3b"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule2.getAction(1).idealCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/pg_rbtPeriodSec_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:labelFor="@id/pg_edtPeriod_4"
+                            android:text="@string/pg_lblActionText3a"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:check="@{rule2.getAction(1).onPeriodCheck}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/pg_edtPeriod_4"
+                            android:enabled="false"
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:ems="10"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@{(rule2.getAction(1).onPeriod.startsWith(&quot;-&quot;) || rule2.getAction(1).onPeriod.equals(&quot;0&quot;)) ? &quot;&quot; : rule2.getAction(1).onPeriod}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/pg_rbtPeriodSec_4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/pg_lblSeconds4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/seconds"
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/pg_edtPeriod_4"
+                            app:layout_constraintStart_toEndOf="@+id/pg_edtPeriod_4"
+                            app:layout_constraintTop_toTopOf="@+id/pg_edtPeriod_4" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RadioGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

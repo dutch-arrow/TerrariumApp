@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="rules" type="nl.das.terrarium.data.Rules" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/prg_btnRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/ti_btnRefresh"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/prg_btnSave"
+                android:text="@string/ti_btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/prg_btnRefresh"
+                app:layout_constraintStart_toEndOf="@+id/prg_btnRefresh"
+                app:layout_constraintTop_toTopOf="@+id/prg_btnRefresh" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/pg_swActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/pg_lblActive"
+                android:textAlignment="viewEnd"
+                android:textOff="@string/off"
+                android:textOn="@string/on"
+                android:textSize="18sp"
+                android:checked="@{rules.active}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <TextView
+                android:id="@+id/pg_lblAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:labelFor="@id/pg_edtStart"
+                android:text="@string/pg_lblAt"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_swActive"
+                app:layout_constraintStart_toEndOf="@+id/pg_swActive"
+                app:layout_constraintTop_toTopOf="@+id/pg_swActive" />
+
+            <EditText
+                android:id="@+id/pg_edtStart"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:autofillHints="android:hint"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:text="@{rules.timeOfDay}"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblAt"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblAt"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblAt" />
+
+            <TextView
+                android:id="@+id/pg_lblIdeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/pg_lblIdeal"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_edtStart"
+                app:layout_constraintStart_toEndOf="@+id/pg_edtStart"
+                app:layout_constraintTop_toTopOf="@+id/pg_edtStart" />
+
+            <TextView
+                android:id="@+id/pg_lblHum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:labelFor="@id/pg_edtHum"
+                android:text="@string/pg_lblHum"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblIdeal"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblIdeal"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblIdeal" />
+
+            <EditText
+                android:id="@+id/pg_edtHum"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:labelFor="@id/pg_lblHum"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:text="@{rules.humIdeal}"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_edtStart"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblHum"
+                app:layout_constraintTop_toTopOf="@+id/pg_edtStart" />
+
+            <TextView
+                android:id="@+id/pg_lblPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percent"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblHum"
+                app:layout_constraintStart_toEndOf="@+id/pg_edtHum"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblHum" />
+
+            <TextView
+                android:id="@+id/pg_lblTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:labelFor="@id/pg_edtTemp"
+                android:text="@string/pg_lblTemp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblIdeal"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblPercent"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblIdeal"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/pg_edtTemp"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:labelFor="@id/pg_lblTemp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:text="@{rules.tempIdeal}"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_edtStart"
+                app:layout_constraintStart_toEndOf="@+id/pg_lblTemp"
+                app:layout_constraintTop_toTopOf="@+id/pg_edtStart" />
+
+            <TextView
+                android:id="@+id/pg_lblDegrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degrees"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/pg_lblTemp"
+                app:layout_constraintStart_toEndOf="@+id/pg_edtTemp"
+                app:layout_constraintTop_toTopOf="@+id/pg_lblTemp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pg_edtStart" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/prg_frv_temphum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

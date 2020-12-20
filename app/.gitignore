@@ -1,0 +1,4 @@
+/build
+/src/androidTest/java/nl/das/terrarium/ExampleInstrumentedTest.java
+/src/test/java/nl/das/terrarium/ExampleUnitTest.java
+/libs

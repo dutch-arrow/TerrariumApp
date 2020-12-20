@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dryingPeriods"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/pg_btnDryRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/pg_btnRefresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pg_btnDrySave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/pg_btnSave"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_btnDryRefresh"
+        app:layout_constraintStart_toEndOf="@+id/pg_btnDryRefresh"
+        app:layout_constraintTop_toTopOf="@+id/pg_btnDryRefresh" />
+
+    <TextView
+        android:id="@+id/pg_tvwDryingPeriods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/pg_tvwDryingPeriodsTitle"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/pg_btnDryRefresh"
+        app:layout_constraintTop_toBottomOf="@+id/pg_btnDryRefresh" />
+
+    <TextView
+        android:id="@+id/pg_tvwStartAfter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/pg_tvwStartAfter"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pg_tvwDryingPeriods"
+        app:layout_constraintTop_toBottomOf="@+id/pg_tvwDryingPeriods" />
+
+    <EditText
+        android:id="@+id/pg_edtStartAfter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:ems="3"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_tvwStartAfter"
+        app:layout_constraintStart_toEndOf="@+id/pg_tvwStartAfter"
+        app:layout_constraintTop_toTopOf="@+id/pg_tvwStartAfter" />
+
+    <TextView
+        android:id="@+id/pg_tvwPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/pg_tvwAfter"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_edtStartAfter"
+        app:layout_constraintStart_toEndOf="@+id/pg_edtStartAfter"
+        app:layout_constraintTop_toTopOf="@+id/pg_edtStartAfter" />
+
+    <EditText
+        android:id="@+id/pg_edtDryPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:ems="3"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_tvwDuring"
+        app:layout_constraintStart_toEndOf="@+id/pg_tvwDuring"
+        app:layout_constraintTop_toTopOf="@+id/pg_tvwDuring" />
+
+    <TextView
+        android:id="@+id/pg_tvwDuring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/pg_tvwPeriod1"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/pg_tvwStartAfter"
+        app:layout_constraintTop_toBottomOf="@+id/pg_tvwStartAfter" />
+
+    <TextView
+        android:id="@+id/pg_tvwMinuten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/minutes"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_edtDryPeriod"
+        app:layout_constraintStart_toEndOf="@+id/pg_edtDryPeriod"
+        app:layout_constraintTop_toTopOf="@+id/pg_edtDryPeriod" />
+
+    <TextView
+        android:id="@+id/pg_tvwPostfix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/pg_tvwPeriod2"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pg_tvwMinuten"
+        app:layout_constraintStart_toEndOf="@+id/pg_tvwMinuten"
+        app:layout_constraintTop_toTopOf="@+id/pg_tvwMinuten" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

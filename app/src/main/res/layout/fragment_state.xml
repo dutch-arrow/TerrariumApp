@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/state_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".fragments.StateFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/stateHeader"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titleStateFragment"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/refreshButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.402"
+            app:layout_constraintStart_toEndOf="@+id/refreshButton"
+            app:layout_constraintTop_toTopOf="@+id/refreshButton" />
+
+        <Button
+            android:id="@+id/refreshButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/st_btnRefresh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/refreshButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/stateBody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/st_tvwClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/st_tvwClock"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/st_tvwDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:text="20-nov-2020 16:15"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwClock"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwClock"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwClock" />
+
+        <Button
+            android:id="@+id/st_btnClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/st_btnManual"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwDateTime"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwDateTime"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwDateTime" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/st_tvwRules"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwDateTime"
+            app:layout_constraintStart_toEndOf="@+id/st_btnClock"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwDateTime" />
+
+        <TextView
+            android:id="@+id/st_tvwTerrarium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/st_tvwTerrarium"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwClock"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwRules"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwClock"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/st_tvwThum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="90"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTerrarium"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwTerrarium"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTerrarium" />
+
+        <TextView
+            android:id="@+id/st_tvwTPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percent"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwThum"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwThum"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwThum" />
+
+        <TextView
+            android:id="@+id/st_tvwTtemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="30"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTPercent"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwTPercent"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTPercent" />
+
+        <TextView
+            android:id="@+id/st_tvwTdegrees"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:text="@string/degrees"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTtemp"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwTtemp"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTtemp" />
+
+        <TextView
+            android:id="@+id/st_tvwRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/st_tvwRoom"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTdegrees"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwTdegrees"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTdegrees" />
+
+        <TextView
+            android:id="@+id/st_tvwRhum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="90"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTerrarium"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwRoom"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTerrarium" />
+
+        <TextView
+            android:id="@+id/st_tvwTPercent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percent"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwThum"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwRhum"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwThum" />
+
+        <TextView
+            android:id="@+id/st_tvwRtemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="30"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTPercent"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwTPercent2"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTPercent" />
+
+        <TextView
+            android:id="@+id/st_tvwTdegrees2"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:text="@string/degrees"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/st_tvwTtemp"
+            app:layout_constraintStart_toEndOf="@+id/st_tvwRtemp"
+            app:layout_constraintTop_toTopOf="@+id/st_tvwTtemp"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/st_tvwClock" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchSprayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="376dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblSprayer"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp1"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/textViewMist"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/switchMist"
+            app:layout_constraintTop_toTopOf="@+id/switchMist" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchPump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblPump"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/switchSprayer"
+            app:layout_constraintTop_toBottomOf="@+id/switchSprayer"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/textViewPump"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/switchPump"
+            app:layout_constraintTop_toTopOf="@+id/switchPump" />
+
+        <TextView
+            android:id="@+id/textViewFanIn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/switchFanIn"
+            app:layout_constraintTop_toTopOf="@+id/switchFanIn" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchMist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblMist"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/switchPump"
+            app:layout_constraintTop_toBottomOf="@+id/switchPump"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchFanOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblFanOut"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/switchFanIn"
+            app:layout_constraintTop_toBottomOf="@+id/switchFanIn"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/textViewFanOut"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/switchFanOut"
+            app:layout_constraintTop_toTopOf="@+id/switchFanOut" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchFanIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblFanIn"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/switchMist"
+            app:layout_constraintTop_toBottomOf="@+id/switchMist"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/textViewSprayer"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/switchSprayer"
+            app:layout_constraintTop_toTopOf="@+id/switchSprayer" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight1"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight2"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/switchLamp1"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight3"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/switchLamp2"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp2"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight4"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/switchLamp3"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp3"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight5"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/switchLamp4"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp4"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchLamp6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/lblLight6"
+            android:textAlignment="viewEnd"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/switchLamp5"
+            app:layout_constraintTop_toBottomOf="@+id/switchLamp5"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/textViewLamp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp1"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp1" />
+
+        <TextView
+            android:id="@+id/textViewLamp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp2"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp2" />
+
+        <TextView
+            android:id="@+id/textViewLamp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp3"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp3" />
+
+        <TextView
+            android:id="@+id/textViewLamp4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp4"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp4" />
+
+        <TextView
+            android:id="@+id/textViewLamp5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp5"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp5" />
+
+        <TextView
+            android:id="@+id/textViewLamp6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="zonder eindtijd"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/switchLamp6"
+            app:layout_constraintTop_toTopOf="@+id/switchLamp6" />
+
+        <TextView
+            android:id="@+id/st_tvwRules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="nacht"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

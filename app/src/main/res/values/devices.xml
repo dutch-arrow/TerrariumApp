@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string-array name="devices_label_array">
+        <item />
+        <item>Lamp 1</item>
+        <item>Lamp 2</item>
+        <item>Lamp 3</item>
+        <item>Lamp 4</item>
+        <item>Lamp 5</item>
+        <item>Lamp 6</item>
+        <item>Achterwand bevloei\u00EFng</item>
+        <item>Sproeier</item>
+        <item>Vernevelaar</item>
+        <item>Ventilator In</item>
+        <item>Ventilator Uit</item>
+    </string-array>
+    <string-array name="devices_array">
+        <item>no device</item>
+        <item tools:ignore="Typos">light1</item>
+        <item>light2</item>
+        <item>light3</item>
+        <item>light4</item>
+        <item>light5</item>
+        <item>light6</item>
+        <item>pump</item>
+        <item>sprayer</item>
+        <item>mist</item>
+        <item>fan_in</item>
+        <item>fan_out</item>
+    </string-array>
+</resources>
